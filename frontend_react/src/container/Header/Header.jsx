@@ -17,7 +17,7 @@ const scaleVariants = {
 
 const Header = () => {
   return (
-    <div className='app__header app__flex'>
+    <div id='home' className='app__header app__flex'>
       {/* Animated div */}
       <motion.div
         whileInView={{x: [-100, 0], opacity: [0, 1]}}
@@ -32,12 +32,14 @@ const Header = () => {
               <h1 className='head-text'>Alvaro</h1>
             </div>
           </div>
+
+          <div className='tag-cmp app__flex'>
+            <p className='p-text'>Web Developer</p>
+            <p className='p-text'>Marketer</p>
+          </div>
         </div>
 
-        <div className='tag-cmp app__flex'>
-          <p className='p-text'>Web Developer</p>
-          <p className='p-text'>Marketer</p>
-        </div>
+        
       </motion.div>
 
       <motion.div
@@ -51,7 +53,7 @@ const Header = () => {
           transition={{ duration: 1, ease: 'easeInOut'}}
           src={images.circle}
           alt='profile-circle'
-          className='overlay_cricle'
+          className='overlay_circle'
         />
       </motion.div>
 
