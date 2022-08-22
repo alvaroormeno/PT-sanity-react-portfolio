@@ -12,3 +12,5 @@ const MotionWrap = (Component, classNames) => function HOC() {
     </motion.div>
   )
 }
+
+export default MotionWrap
