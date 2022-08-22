@@ -11,6 +11,19 @@ const Work = () => {
   const [activeFilter, setActiveFilter] = useState('All')
   const [animateCard, setAnimateCard] = useState({y: 0, opacity: 1})
 
+  const [works, setWorks] = useState([])
+  const [filterWork, setFilterWork] = useState([])
+
+  useEffect(() => {
+    const query = '*[_type == "works"]';
+
+    client.fetch(query)
+    .then((data) => {
+      setWorks(data);
+      setFilterWork(data);
+    })
+  }, [])
+
   const handleWorkFilter = (item) => {
 
   }
