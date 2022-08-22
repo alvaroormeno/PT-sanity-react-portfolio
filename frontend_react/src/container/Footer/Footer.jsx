@@ -91,7 +91,7 @@ function Footer() {
             placeholder='Your Message'
             value={message}
             name='message'
-            onChange={{handleChangeInput}}
+            onChange={handleChangeInput}
           ></textarea>
         </div>
         <button type='button' className='p-text' onClick={handleSubmit}>
