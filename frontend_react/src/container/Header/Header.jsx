@@ -1,6 +1,8 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 import {images} from '../../constants'
+import {AppWrap} from '../../wrapper'
+
 
 import './Header.scss'
 
@@ -17,7 +19,7 @@ const scaleVariants = {
 
 const Header = () => {
   return (
-    <div id='home' className='app__header app__flex'>
+    <div className='app__header app__flex'>
       {/* Animated div */}
       <motion.div
         whileInView={{x: [-100, 0], opacity: [0, 1]}}
@@ -72,4 +74,5 @@ const Header = () => {
   )
 }
 
-export default Header
+// To wrapp this header component with appwrapp wrapper component, we need to wrap the export with appwrap and then pass home as second property which is the id since appwrapp recieved 2 arguments: (Component, idName, classNames)
+export default AppWrap(Header, 'home');
