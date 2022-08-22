@@ -2,31 +2,47 @@ import React, {useState, useEffect} from 'react'
 import './About.scss'
 import { motion } from 'framer-motion'
 import { images } from '../../constants'
+import {urlFor, client} from '../../client.js'
+
+
+// const abouts = [
+//   {
+//     title: 'Web Development',
+//     description: 'Im a good web developer',
+//     imgUrl: images.about01
+//   },
+//   {
+//     title: 'Web Design',
+//     description: 'Im a good web developer',
+//     imgUrl: images.about02
+//   },
+//   {
+//     title: 'UI/UX',
+//     description: 'Im a good web developer',
+//     imgUrl: images.about03
+//   },
+//   {
+//     title: 'Web Animations',
+//     description: 'Im a good web developer',
+//     imgUrl: images.about04
+//   }
+// ]
 
 function About() {
 
-  const abouts = [
-    {
-      title: 'Web Development',
-      description: 'Im a good web developer',
-      imgUrl: images.about01
-    },
-    {
-      title: 'Web Design',
-      description: 'Im a good web developer',
-      imgUrl: images.about02
-    },
-    {
-      title: 'UI/UX',
-      description: 'Im a good web developer',
-      imgUrl: images.about03
-    },
-    {
-      title: 'Web Animations',
-      description: 'Im a good web developer',
-      imgUrl: images.about04
-    }
-  ]
+  const [abouts, setAbouts] = useState([]);
+
+  // Will only run once the component renders, therefore no dependencies
+  // Inside we save query to a variable and use it to fetch data from sanity and set it to the about state which we map in jsx.
+  useEffect(() => {
+    const query = '*[_type == "abouts"]'
+
+    client.fetch(query)
+    .then((data) => {
+      setAbouts(data)
+    })
+  }, [])
+
 
   return (
     <>
@@ -43,7 +59,7 @@ function About() {
             className='app__profile-item'
             key={about.title + index}
           >
-            <img src={about.imgUrl} alt={about.title} />
+            <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className='bold-text' style={{marginTop: 20}}>{about.title}</h2>
             <p className='p-text' style={{marginTop: 10}}>{about.description}</p>
           </motion.div>
